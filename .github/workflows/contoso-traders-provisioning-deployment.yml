@@ -73,8 +73,8 @@ jobs:
           cluster-name: ${{ env.AKS_CLUSTER_NAME }}${{ vars.SUFFIX }}
       - name: echo everything
         run: |
-            echo pwd
-            echo ls
+            echo "$(pwd)"
+            echo "$(ls)"
             echo "::endgroup::"
       - name: docker build
         run: docker build -f "./src/ContosoTraders.Api.Carts/Dockerfile" -t ${{ env.ACR_NAME }}${{ vars.SUFFIX }}.azurecr.io/${{ env.CARTS_ACR_REPOSITORY_NAME }}:latest -t ${{ env.ACR_NAME }}${{ vars.SUFFIX }}.azurecr.io/${{ env.CARTS_ACR_REPOSITORY_NAME }}:${{ github.sha }} .
