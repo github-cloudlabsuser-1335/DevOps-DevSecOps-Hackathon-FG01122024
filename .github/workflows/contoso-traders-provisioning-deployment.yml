@@ -71,20 +71,11 @@ jobs:
         with:
           resource-group: ${{ env.RESOURCE_GROUP_NAME }}${{ vars.SUFFIX }}
           cluster-name: ${{ env.AKS_CLUSTER_NAME }}${{ vars.SUFFIX }}
-      - name: Echo Action
-        # You may pin to the exact commit or the version.
-        # uses: imesense/gha-echo-action@4f631d5693606335d797e599319cdeb402ac9568
-        uses: imesense/gha-echo-action@v0.2
-        with:
-          # Input string
-          input-string: ls
-      - name: Echo Action
-        # You may pin to the exact commit or the version.
-        # uses: imesense/gha-echo-action@4f631d5693606335d797e599319cdeb402ac9568
-        uses: imesense/gha-echo-action@v0.2
-        with:
-          # Input string
-          input-string: pwd
+      - name: echo everything
+        run: |
+            echo pwd
+            echo ls
+            echo "::endgroup::"
       - name: docker build
         run: docker build -f "./src/ContosoTraders.Api.Carts/Dockerfile" -t ${{ env.ACR_NAME }}${{ vars.SUFFIX }}.azurecr.io/${{ env.CARTS_ACR_REPOSITORY_NAME }}:latest -t ${{ env.ACR_NAME }}${{ vars.SUFFIX }}.azurecr.io/${{ env.CARTS_ACR_REPOSITORY_NAME }}:${{ github.sha }} .
       - name: docker push (to acr)
