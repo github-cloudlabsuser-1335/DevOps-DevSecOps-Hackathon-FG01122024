@@ -4,11 +4,5 @@
   "parameters": {
     "aksLinuxAdminUsername": {
       "value": "localadmin"
-    },
-    "deploymentidvalue": {
-      "value": "1530364"
-    },
-    "bicepsqlpass": {
-      "value": "vpxj02DGM*v2"
-  }
+    }
 }
