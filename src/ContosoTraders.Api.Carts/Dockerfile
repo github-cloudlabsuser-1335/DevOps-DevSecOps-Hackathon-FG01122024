@@ -5,8 +5,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /app
-COPY ["src/ContosoTraders.Api.Carts/ContosoTraders.Api.Carts.csproj", "ContosoTraders.Api.Carts/"]
-COPY ["src/ContosoTraders.Api.Core/ContosoTraders.Api.Core.csproj", "ContosoTraders.Api.Core/"]
+COPY ["/src/ContosoTraders.Api.Carts/ContosoTraders.Api.Carts.csproj", "ContosoTraders.Api.Carts/"]
+COPY ["/src/ContosoTraders.Api.Core/ContosoTraders.Api.Core.csproj", "ContosoTraders.Api.Core/"]
 RUN dotnet restore "ContosoTraders.Api.Carts/ContosoTraders.Api.Carts.csproj"
 COPY . .
 WORKDIR "/src/ContosoTraders.Api.Carts"
