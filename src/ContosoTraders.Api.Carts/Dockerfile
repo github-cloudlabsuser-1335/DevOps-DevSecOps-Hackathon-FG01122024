@@ -9,11 +9,10 @@ COPY ["/src/ContosoTraders.Api.Carts/ContosoTraders.Api.Carts.csproj", "ContosoT
 COPY ["/src/ContosoTraders.Api.Core/ContosoTraders.Api.Core.csproj", "ContosoTraders.Api.Core/"]
 RUN dotnet restore "ContosoTraders.Api.Carts/ContosoTraders.Api.Carts.csproj"
 COPY . .
-WORKDIR "/ContosoTraders.Api.Carts"
-RUN dotnet build "ContosoTraders.Api.Carts.csproj" -c Release -o /app/build
+RUN dotnet build "/ContosoTraders.Api.Carts/ContosoTraders.Api.Carts.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "ContosoTraders.Api.Carts.csproj" -c Release -o /app/publish
+RUN dotnet publish "/ContosoTraders.Api.Carts/ContosoTraders.Api.Carts.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
